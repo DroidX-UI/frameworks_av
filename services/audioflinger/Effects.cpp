@@ -2182,6 +2182,10 @@ void AudioFlinger::EffectChain::clearInputBuffer()
 {
     Mutex::Autolock _l(mLock);
     clearInputBuffer_l();
+
+    for (size_t i = 0; i < mEffects.size(); i++) {
+        mEffects[i]->reset_l();
+    }
 }
 
 // Must be called with EffectChain::mLock locked
