@@ -534,7 +534,7 @@ public:
                         * align(mHeight, 64) / plane.rowSampling;
             }
 
-            if (minPtr == mView.data()[0] && (maxPtr - minPtr + 1) <= planeSize) {
+            if (minPtr == mView.data()[0] && (maxPtr - minPtr) <= planeSize) {
                 // FIXME: this is risky as reading/writing data out of bound results
                 //        in an undefined behavior, but gralloc does assume a
                 //        contiguous mapping
@@ -546,8 +546,7 @@ public:
                     mediaImage->mPlane[i].mHorizSubsampling = plane.colSampling;
                     mediaImage->mPlane[i].mVertSubsampling = plane.rowSampling;
                 }
-                mWrapped = new ABuffer(const_cast<uint8_t *>(minPtr),
-                                       maxPtr - minPtr + 1);
+                mWrapped = new ABuffer(const_cast<uint8_t *>(minPtr), maxPtr - minPtr);
                 ALOGV("Converter: wrapped (capacity=%zu)", mWrapped->capacity());
             }
         }
