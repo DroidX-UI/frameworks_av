@@ -1087,7 +1087,6 @@ void CCodec::configure(const sp<AMessage> &msg) {
                     if (vendorSdkVersion < __ANDROID_API_S__ &&
                             (format == COLOR_FormatYUV420Planar ||
                              format == COLOR_FormatYUV420PackedPlanar ||
-                             format == COLOR_FormatYUV420SemiPlanar ||
                              format == COLOR_FormatYUV420PackedSemiPlanar)) {
                         // pre-S framework used to map these color formats into YV12.
                         // Codecs from older vendor partition may be relying on
