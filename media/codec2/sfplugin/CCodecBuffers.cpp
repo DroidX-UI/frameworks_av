@@ -221,11 +221,8 @@ bool OutputBuffers::convert(
                         (AudioEncoding)codecEncoding, (AudioEncoding)configEncoding);
                 ALOGD_IF(mDataConverter, "[%s] Converter created from %d to %d",
                          mName, codecEncoding, configEncoding);
-                mFormatWithConverter = mFormat->dup();
-                mFormatWithConverter->setInt32(KEY_PCM_ENCODING, configEncoding);
             } else {
                 mDataConverter = nullptr;
-                mFormatWithConverter = nullptr;
             }
             mSrcEncoding = codecEncoding;
             mDstEncoding = configEncoding;
@@ -257,7 +254,8 @@ bool OutputBuffers::convert(
         ALOGD("[%s] buffer conversion failed: %d", mName, err);
         return false;
     }
-    dstBuffer->setFormat(mFormatWithConverter);
+    dstBuffer->setFormat(mFormat);
+    mFormat->setInt32(KEY_PCM_ENCODING, configEncoding);
     return true;
 }
 

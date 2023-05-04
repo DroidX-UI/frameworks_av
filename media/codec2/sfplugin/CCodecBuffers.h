@@ -408,7 +408,6 @@ private:
 
     // DataConverter
     sp<DataConverter> mDataConverter;
-    sp<AMessage> mFormatWithConverter;
     std::optional<int32_t> mSrcEncoding;
     std::optional<int32_t> mDstEncoding;
 
