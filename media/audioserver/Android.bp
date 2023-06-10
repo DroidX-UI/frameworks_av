@@ -23,6 +23,8 @@ cc_binary {
         "libaudiohal_headers",
         "libmedia_headers",
         "libmediametrics_headers",
+        "dolby_ds_headers",
+        "dolby_vision_headers",
     ],
 
     shared_libs: [

@@ -104,6 +104,9 @@
 #define ALOGVV(a...) do { } while(0)
 #endif
 
+// MIUI ADD: DOLBY_ENABLE
+#include "EffectDapController_impl.h"
+
 namespace android {
 
 #define MAX_AAUDIO_PROPERTY_DEVICE_HAL_VERSION 7.1
@@ -118,7 +121,6 @@ static const char kDeadlockedString[] = "AudioFlinger may be deadlocked\n";
 static const char kHardwareLockedString[] = "Hardware lock is taken\n";
 static const char kClientLockedString[] = "Client lock is taken\n";
 static const char kNoEffectsFactory[] = "Effects Factory is absent\n";
-
 
 nsecs_t AudioFlinger::mStandbyTimeInNsecs = kDefaultStandbyTimeInNsecs;
 

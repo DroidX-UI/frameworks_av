@@ -95,6 +95,11 @@
 #include <pthread.h>
 #include "TypedLogger.h"
 
+// MIUI ADD: DOLBY_ENABLE && DOLBY_ATMOS_GAME
+#include "ds_config.h"
+// MIUI ADD: DOLBY_ENABLE && DOLBY_VQE
+#include "DlbVqeCallback.h"
+
 // ----------------------------------------------------------------------------
 
 // Note: the following macro is used for extremely verbose logging message.  In
