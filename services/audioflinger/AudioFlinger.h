@@ -104,6 +104,9 @@
 #include <vibrator/ExternalVibration.h>
 #include <vibrator/ExternalVibrationUtils.h>
 
+// MIUI ADD: DOLBY_ENABLE
+#include "ds_config.h"
+
 #include "android/media/BnAudioRecord.h"
 #include "android/media/BnEffect.h"
 
@@ -1038,6 +1041,7 @@ private:
     int32_t mAAudioBurstsPerBuffer = 0;
     int32_t mAAudioHwBurstMinMicros = 0;
 
+// MIUI ADD: DOLBY_ENABLE
 #include "EffectDapController.h"
 };
 
