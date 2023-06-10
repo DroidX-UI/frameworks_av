@@ -45,6 +45,8 @@ cc_library_shared {
     header_libs: [
         "libbase_headers",
         "media_plugin_headers",
+        "dolby_ds_headers",
+        "dolby_vision_headers",
     ],
 
     export_header_lib_headers: [

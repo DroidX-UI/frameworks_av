@@ -1,0 +1,12 @@
+cc_library_headers {
+    name: "dolby_vision_headers",
+    vendor_available: true,
+    export_include_dirs: ["dovi/inc", "swidk/inc"],
+    target: {
+        android_arm64: {
+            srcs: [],
+        },
+    },
+    // Other module properties
+}
+
