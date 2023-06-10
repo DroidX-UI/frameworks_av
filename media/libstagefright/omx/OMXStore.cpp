@@ -28,6 +28,9 @@
 #include <dlfcn.h>
 #include <fcntl.h>
 
+// MIUI ADD: DOLBY_ENABLE
+#include "generic_impl.h"
+
 #include <sstream>
 
 namespace android {
