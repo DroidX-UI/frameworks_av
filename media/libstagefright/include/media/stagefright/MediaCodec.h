@@ -30,6 +30,12 @@
 #include <media/stagefright/FrameRenderTracker.h>
 #include <utils/Vector.h>
 
+// Video Information Impl
+#include "VideoInfoImp.h"
+
+// Dolby Vision
+#include <PixelProcessing.h>
+
 class C2Buffer;
 class C2GraphicBlock;
 class C2LinearBlock;

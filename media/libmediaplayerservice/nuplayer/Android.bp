@@ -53,6 +53,8 @@ cc_library_static {
         "libstagefright_httplive_headers",
         "libstagefright_mpeg2support_headers",
         "libstagefright_rtsp_headers",
+        "dolby_ds_headers",
+        "dolby_vision_headers",
     ],
 
     cflags: [
