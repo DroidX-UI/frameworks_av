@@ -436,10 +436,17 @@ media_status_t TranscoderWrapper::setupTranscoder(
 
     callback->onHeartBeat(clientId, sessionId);
 
+    bool isDolbyVision = false;
     for (int i = 0; i < trackFormats.size(); ++i) {
         std::shared_ptr<AMediaFormat> format;
         const char* mime = nullptr;
         AMediaFormat_getString(trackFormats[i].get(), AMEDIAFORMAT_KEY_MIME, &mime);
+
+        if (!strcmp(mime,  "video/dolby-vision")) {
+            isDolbyVision = true;
+        } else if (isDolbyVision && !strncmp(mime, "video/", 6)) {
+            continue;
+        }
 
         if (!strncmp(mime, "video/", 6)) {
             format = getVideoFormat(mime, request.requestedVideoTrackFormat);
