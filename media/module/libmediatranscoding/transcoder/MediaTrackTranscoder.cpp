@@ -21,6 +21,7 @@
 #include <media/MediaTrackTranscoder.h>
 #include <media/MediaTrackTranscoderCallback.h>
 #include <utils/AndroidThreads.h>
+#include <media/NdkCommon.h>
 
 namespace android {
 
@@ -52,6 +53,20 @@ media_status_t MediaTrackTranscoder::configure(
         LOG(ERROR) << "Unable to get format for track #" << mTrackIndex;
         return AMEDIA_ERROR_MALFORMED;
     }
+
+    //add dolby vision transcoding
+    const char* sourceMime = nullptr;
+    auto ok = AMediaFormat_getString(mSourceFormat.get(), AMEDIAFORMAT_KEY_MIME, &sourceMime);
+    if (ok && !strcmp(sourceMime,  "video/dolby-vision")) {
+        int  codecProfile = -1;
+        AMediaFormat_getInt32(mSourceFormat.get(), AMEDIAFORMAT_KEY_PROFILE, &codecProfile);
+        if (codecProfile == 512) {
+            return AMEDIA_ERROR_UNSUPPORTED;
+         }
+        AMediaFormat_setString(mSourceFormat.get(), AMEDIAFORMAT_KEY_MIME, AMEDIA_MIMETYPE_VIDEO_HEVC);
+        AMediaFormat_setInt32(mSourceFormat.get(), AMEDIAFORMAT_KEY_COLOR_TRANSFER, 6);
+    }
+    //add dolby vision transcoding
 
     media_status_t status = configureDestinationFormat(destinationFormat);
     if (status != AMEDIA_OK) {
