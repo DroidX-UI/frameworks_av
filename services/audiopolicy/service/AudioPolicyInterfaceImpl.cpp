@@ -910,7 +910,8 @@ Status AudioPolicyService::startInput(int32_t portIdAidl)
 
     std::stringstream msg;
     msg << "Audio recording on session " << client->session;
-    const auto permitted = startRecording(client->attributionSource, client->virtualDeviceId,
+    const auto permitted = isAudioServerOrMediaServerUid(client->attributionSource.uid) ||
+            startRecording(client->attributionSource, client->virtualDeviceId,
             String16(msg.str().c_str()), client->attributes.source);
 
     // check calling permissions
